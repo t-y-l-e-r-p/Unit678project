@@ -16,7 +16,7 @@ public class Logic {
     private boolean win = true;
     private int check = 0;
     private int attempts = 0;
-    private void importDictionary()
+    public void importDictionary()
     {
         String[] tmp = null;
         try
@@ -47,6 +47,7 @@ public class Logic {
         Scanner scan = new Scanner(System.in);
         System.out.println("Hello, what is your name");
         name = scan.nextLine();
+        System.out.println("Hello" + " " + name);
         boolean go = true;
         while (go) {
             System.out.println("What are the dimensions you wish to play(must be divisble by 2)");
@@ -61,7 +62,9 @@ public class Logic {
         emptyBoard = new String[dimension][dimension];
         wordCount = dimension * dimension / 2;
         for (int i = 0; i < wordCount; i++) {
-            wordList.set(i, dictionary.get((int) (Math.random() * dictionary.size())));
+            int position = (int)(Math.random() * dictionary.size());
+            wordList.set(i, dictionary.get(position));
+            dictionary.remove(position);
         }
         int doubling = wordList.size();
         for (int z = 0; z < doubling; z++) {
@@ -80,7 +83,7 @@ public class Logic {
                 System.out.println(element);
             }
         }
-        Thread.sleep(4000);
+       /* Thread.sleep(2500);
         System.out.print("\033[H\033[2J");
         System.out.flush();
 
@@ -126,6 +129,6 @@ public class Logic {
                 }
             }
         }
-        System.out.println("Congraulations you won it took you " + attempts + " attempts");
+        System.out.println("Congraulations you won it took you " + attempts + " attempts"); */
     }
 }
