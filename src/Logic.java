@@ -12,7 +12,7 @@ public class Logic {
     private String[][] emptyBoard;
     private ArrayList<String> dictionary;
     private int wordCount = 0;
-    private ArrayList<String> wordList;
+    private ArrayList<String> wordList = new ArrayList<String>();
     private boolean win = true;
     private int check = 0;
     private int attempts = 0;
@@ -21,7 +21,8 @@ public class Logic {
         String[] tmp = null;
         try
         {
-            FileReader fileReader = new FileReader("src\\dictionary.txt");
+            FileReader fileReader = new FileReader(".//src//dictionary.txt");
+            //FileReader fileReader = new FileReader(".//src//dictionary.txt");
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             ArrayList<String> lines = new ArrayList<String>();
             String line = null;
@@ -58,12 +59,14 @@ public class Logic {
                 System.out.println("This number is invalid, please pick again");
             }
         }
+        System.out.println("dimension");
         board = new String[dimension][dimension];
         emptyBoard = new String[dimension][dimension];
         wordCount = dimension * dimension / 2;
+        System.out.println(dictionary.get(6));
         for (int i = 0; i < wordCount; i++) {
             int position = (int)(Math.random() * dictionary.size());
-            wordList.set(i, dictionary.get(position));
+            wordList.add(dictionary.get(position));
             dictionary.remove(position);
         }
         int doubling = wordList.size();
@@ -78,9 +81,11 @@ public class Logic {
                 adding--;
             }
         }
-        for (String[] row : board) {
-            for (String element : row) {
-                System.out.println(element);
+        for(int row = 0; row < board.length; row++)
+        {
+            for(int col = 0; col < board[0].length; col++)
+            {
+                System.out.println(board[row][col]);
             }
         }
        /* Thread.sleep(2500);
