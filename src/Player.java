@@ -1,18 +1,19 @@
+
 public class Player {
     public String name = "";
-    public int dimension = 0;
-    public Player(int dimension, String name)
+    public int attempts = 0;
+    public Player(int attempts, String name) // player constructor
     {
-        this.dimension = dimension;
+        this.attempts = attempts;
         this.name = name;
     }
-    public String getName()
+    public String getName() //getter method for name
     {
         return name;
     }
-    public int getDimension()
+    public int getAttempts() // getter method for attempts
     {
-        return dimension;
+        return attempts;
     }
 
 }
